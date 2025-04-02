@@ -10,7 +10,7 @@ yarn install
 touch .env
 yarn start:dev
 ```
-- Remember to set up environment files
+- Remember to set up environment files templated in .env.sample
 
 ## APIs
 Full api documentation available on 
