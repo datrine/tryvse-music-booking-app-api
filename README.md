@@ -19,43 +19,43 @@ Full api documentation available on
 
 ### Artist Profile
 #### Create Artist Profile
-- POST /api/v1/artist_profiles
+- **POST** /api/v1/artist_profiles
 
 #### Get Multiple Artist Profile
-- GET /api/v1/artist_profiles
+- **GET** /api/v1/artist_profiles
 
 #### Update Artist Profile
-- PUT /api/v1/artist_profiles/:id
+- **PUT** /api/v1/artist_profiles/:id
 
 #### Delete Artist Profile
-- PUT /api/v1/artist_profiles/:id
+- **PUT** /api/v1/artist_profiles/:id
 
 
 ### Authentication
 #### Sign in Artist
-- POST /api/v1/auth/signin
+- **POST** /api/v1/auth/signin
 
 
 ### Booking Profile
 #### Create Booking
-- POST /api/v1/booking_transactions
+- **POST** /api/v1/booking_transactions
 
 #### Get Multiple Bookings (filterable)
-- GET /api/v1/booking_transactions
+- **GET** /api/v1/booking_transactions
 
 
 #### Update Booking
-- PUT /api/v1/booking_transactions/:id/status/actions/confirm
+- **PUT** /api/v1/booking_transactions/:id/status/actions/confirm
 
 #### Confirm Booking
-- PUT /api/v1/booking_transactions/:id/status/actions/confirm
+- **PUT** /api/v1/booking_transactions/:id/status/actions/confirm
 
 #### Cancel Booking
-- PUT /api/v1/booking_transactions/:id/status/actions/cancel
+- **PUT** /api/v1/booking_transactions/:id/status/actions/cancel
 
 ### Event Listing APIs
 #### Get Events (filterable)
-- GET /api/v1/event_listing
+- **GET** /api/v1/event_listing
 
 #### Get Event by Id
-- GET /api/v1/event_listing/:id
+- **GET** /api/v1/event_listing/:id
