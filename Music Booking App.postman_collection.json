@@ -1,0 +1,466 @@
+{
+	"info": {
+		"_postman_id": "4d5be74e-104b-49b2-a216-59e246b240de",
+		"name": "Music Booking App",
+		"description": "APIs for booking app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41621479"
+	},
+	"item": [
+		{
+			"name": "Artist Profile",
+			"item": [
+				{
+					"name": "Create Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"topeomoalabi@gmail.com\",\r\n    \"password\":\"pass#12Word\",\r\n    \"first_name\":\"Tope\",\r\n    \"last_name\":\"Joe\",\r\n    \"stage_name\":\"Starman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/artist_profiles",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"artist_profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Multiple Profiles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/artist_profiles",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"artist_profiles"
+							],
+							"query": [
+								{
+									"key": "stage_name",
+									"value": "Katarina13",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"John\",\r\n    \"last_name\":\"Doe\",\r\n    \"stage_name\":\"Wizman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/artist_profiles/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"artist_profiles",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JWT_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"Jonah\",\r\n    \"last_name\":\"Doe\",\r\n    \"stage_name\":\"Wizman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/artist_profiles/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"artist_profiles",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Profile By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"John\",\r\n    \"last_name\":\"Doe\",\r\n    \"stage_name\":\"Wizman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/artist_profiles/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"artist_profiles",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking Transaction",
+			"item": [
+				{
+					"name": "Create a Booking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Another cool show\",\r\n    \"artist_id\":1,\r\n    \"description\":\"Another very cool show\",\r\n    \"city\":\"Lagos\",\r\n    \"venue\":\"National Theatre\",\r\n    \"requester\":\"Another Ad Showz\",\r\n    \"date_and_time\":\"2025-07-12T18:30:00Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/booking_transactions",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"booking_transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/booking_transactions",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"booking_transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single Booking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/booking_transactions/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"booking_transactions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Single Booking",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/booking_transactions/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"booking_transactions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Booking Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\":\"new info\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/booking_transactions/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"booking_transactions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm a Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/booking_transactions/:id/status/actions/confirm",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"booking_transactions",
+								":id",
+								"status",
+								"actions",
+								"confirm"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel a Booking",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/booking_transactions/:id/status/actions/confirm",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"booking_transactions",
+								":id",
+								"status",
+								"actions",
+								"confirm"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event Listing",
+			"item": [
+				{
+					"name": "Get Multiple Entries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/event_listing",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"event_listing"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Entry By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/event_listing/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"event_listing",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Event listing APIs to get the event listing of an artist."
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "sign in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"topeomoalabi@gmail.com\",\r\n    \"password\":\"pass#12Word\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/signin",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
