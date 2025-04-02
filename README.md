@@ -2,6 +2,9 @@
 ## Overview
 Music Booking App to allow users book artistes for events.
 
+## Architecture
+Model View Controller Service with Event-driven Architecture
+
 ## Quick start
 ```
 git clone https://github.com/datrine/tryvse-music-booking-app-api.git
