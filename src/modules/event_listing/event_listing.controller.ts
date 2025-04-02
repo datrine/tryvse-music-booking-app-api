@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, HttpStatus, Param, ParseIntPipe, Post, Put, Query, ValidationPipe } from '@nestjs/common';
-import { ApiCreatedResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiCreatedResponse, ApiExcludeEndpoint, ApiOperation } from '@nestjs/swagger';
 import { CreateEventListingEntryOKResponseBodyDTO, DeleteEventLostingEntryOKResponseBodyDTO, GetEventListingEntryOKResponseBodyDTO, GetMultipleBookingTransactionsOKResponseBodyDTO, UpdateEventListingEntryOKResponseBodyDTO } from './dto/response.dto';
 import { CreateEventListingEntryRequestBodyDTO, GetMultipleEventListingEntriesRequestQueryDTO, UpdateEventListingEntryRequestBodyDTO } from './dto/request.dto';
 import { EventListingService } from './event_listing.service';
@@ -9,6 +9,8 @@ import { CreateEventListingEntryInput, GetMultipleEventListingEntryFiltersInput,
 export class EventListingController {
         constructor(private eventListingService: EventListingService) { }
         @Post("/")
+        @ApiExcludeEndpoint()
+        @ApiBearerAuth()
         @ApiCreatedResponse({ type: CreateEventListingEntryOKResponseBodyDTO })
         async create(@Body(new ValidationPipe({ transform: true })) body: CreateEventListingEntryRequestBodyDTO) {
             let input: CreateEventListingEntryInput = {
@@ -24,6 +26,7 @@ export class EventListingController {
         }
     
         @Get("/")
+        @ApiOperation({description:"get multiple events",summary:"get multiple events"})
         @ApiCreatedResponse({ type: GetMultipleBookingTransactionsOKResponseBodyDTO })
         async getMultiple(@Query(new ValidationPipe({ transform: true })) query: GetMultipleEventListingEntriesRequestQueryDTO) {
             let input: GetMultipleEventListingEntryFiltersInput = { ...query }
@@ -37,6 +40,7 @@ export class EventListingController {
         }
     
         @Get("/:id")
+                @ApiOperation({description:"get event by id",summary:"get event by id"})
         @ApiCreatedResponse({ type: GetEventListingEntryOKResponseBodyDTO })
         async getById(@Param("id", new ParseIntPipe({ errorHttpStatusCode: HttpStatus.BAD_REQUEST })) id: number) {
             let resData = await this.eventListingService.getEventEntryById(id)
@@ -49,6 +53,8 @@ export class EventListingController {
         }
     
         @Put("/:id")
+        @ApiExcludeEndpoint()
+        @ApiBearerAuth()
         @ApiCreatedResponse({ type: UpdateEventListingEntryOKResponseBodyDTO })
         async editById(@Param("id", new ParseIntPipe({ errorHttpStatusCode: HttpStatus.BAD_REQUEST })) id: number,
             @Body(new ValidationPipe({ transform: true })) body: UpdateEventListingEntryRequestBodyDTO) {
@@ -67,6 +73,8 @@ export class EventListingController {
             return dto
         }
         @Delete("/:id")
+        @ApiExcludeEndpoint()
+        @ApiBearerAuth()
         @ApiCreatedResponse({ type: DeleteEventLostingEntryOKResponseBodyDTO })
         async deleteById(@Param("id", new ParseIntPipe({ errorHttpStatusCode: HttpStatus.BAD_REQUEST })) id: number) {
             let resData = await this.eventListingService.deleteEventEntry(id)

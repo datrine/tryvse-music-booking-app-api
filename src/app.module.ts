@@ -22,10 +22,10 @@ import { JwtModule, JwtModuleAsyncOptions, JwtModuleOptions } from '@nestjs/jwt'
         return res
       },
     }),
-    EventListingModule,
     ArtistProfileModule,
-    BookingTransactionModule,
-    AuthModule
+    AuthModule,
+    EventListingModule,
+    BookingTransactionModule
     ,],
   controllers: [],
   providers: [AppService],
