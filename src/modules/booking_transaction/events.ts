@@ -1,0 +1,5 @@
+export const NewBookingTransactionCreatedEvent="booking_transaction.created"
+export const BookingTransactionUpdatedEvent="booking_transaction.updated"
+
+export const BookingTransactionConfirmedEvent="booking_transaction.status.confirmed"
+export const BookingTransactionCancellededEvent="booking_transaction.status.cancelled"
